@@ -353,6 +353,15 @@ endif
 " tags
 execute 'syntax match VimwikiTag /'.vimwiki#vars#get_syntaxlocal('rxTags').'/'
 
+" todos
+"syntax match VimwikiTodox / \%[[[]]X\]/ conceal cchar=
+"syntax match VimwikiTodox / \%[[[]] \]/ conceal cchar=
+syntax match VimwikiTodoCBCheckedTail contained / \%[[[]]/ conceal cchar= 
+syntax match VimwikiTodoCBCheckedHead contained /X\]/ conceal cchar=
+syntax match VimwikiTodoCBCheckedFull / \%[[[]]X\]/ contains=VimwikiTodoCBCheckedTail,VimwikiTodoCBCheckedHead 
+syntax match VimwikiTodoCBTail contained / \%[[[]]/ conceal cchar= 
+syntax match VimwikiTodoCBHead contained / \]/ conceal cchar=
+syntax match VimwikiTodoCBFull / \%[[[]] \]/ contains=VimwikiTodoCBTail,VimwikiTodoCBHead 
 
 
 " header groups highlighting
